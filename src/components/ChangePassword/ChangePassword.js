@@ -27,6 +27,7 @@ class ChangePassword extends Component {
     const { msgAlert, history, user } = this.props
 
     changePassword(this.state, user)
+      .then(console.log(this.state))
       .then(() => msgAlert({
         heading: 'Change Password Success',
         message: messages.changePasswordSuccess,
