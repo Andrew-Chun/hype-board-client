@@ -9,6 +9,7 @@ import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import PostCreate from '../Posts/PostCreate'
+import PostIndex from '../Posts/PostIndex'
 
 class App extends Component {
   constructor () {
@@ -16,11 +17,14 @@ class App extends Component {
 
     this.state = {
       user: null,
+      posts: [],
       msgAlerts: []
     }
   }
 
   setUser = user => this.setState({ user })
+
+  setPosts = posts => this.setState({ posts: posts })
 
   clearUser = () => this.setState({ user: null })
 
@@ -57,6 +61,9 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} path='/create-post' render={() => (
             <PostCreate msgAlert={this.msgAlert} user={user} />
+          )} />
+          <Route user={user} path='/posts' render={() => (
+            <PostIndex setPosts={this.setPosts} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>
