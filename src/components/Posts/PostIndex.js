@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Link } from 'react-router-dom'
 import apiConfig from '../../apiConfig'
 
 class PostIndex extends React.Component {
@@ -18,11 +19,10 @@ class PostIndex extends React.Component {
       }
     })
       .then(response => {
-        console.log(response.data)
         this.setState({
           posts: response.data
         })
-        setPosts(response.data.posts)
+        setPosts(response.data)
       })
       .catch(console.error)
   }
@@ -40,7 +40,7 @@ class PostIndex extends React.Component {
               {this.state.posts.map(post => {
                 return (
                   <li key={post.id}>
-                    <h4>{post.title}</h4>
+                    <h4><Link to={`/posts/${post.id}`}>{post.title}</Link></h4>
                     <h4>{post.body}</h4>
                     <h4>{post.created_at}</h4>
                     <h4>{post.updated_at}</h4>

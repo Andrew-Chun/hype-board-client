@@ -10,6 +10,7 @@ import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import PostCreate from '../Posts/PostCreate'
 import PostIndex from '../Posts/PostIndex'
+import PostShow from '../Posts/PostShow'
 
 class App extends Component {
   constructor () {
@@ -62,9 +63,13 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create-post' render={() => (
             <PostCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} path='/posts' render={() => (
+          <AuthenticatedRoute user={user} exact path='/posts' render={() => (
             <PostIndex setPosts={this.setPosts} msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id' render={({ match }) => {
+            this.state.posts.find(post => post.id === match.params.id)
+            return <PostShow msgAlert={this.msgAlert} match={match} user={user} />
+          }} />
         </main>
       </Fragment>
     )
