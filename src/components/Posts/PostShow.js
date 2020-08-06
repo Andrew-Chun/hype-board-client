@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-import { Redirect } from 'react-router-dom'
+import { Redirect, Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 
 class PostShow extends React.Component {
@@ -57,6 +57,7 @@ class PostShow extends React.Component {
   }
 
   render () {
+    const id = this.props.match.params.id
     if (this.state.deleted === true) {
       return <Redirect to='/posts' />
     }
@@ -73,7 +74,10 @@ class PostShow extends React.Component {
               <h4>{this.state.post.body}</h4>
               <h4>{this.state.post.created_at}</h4>
               <h4>{this.state.post.updated_at}</h4>
-              <button className="btn" onClick={this.deletePost}>Delete Post</button>
+              <button onClick={this.deletePost}>Delete Post</button>
+              <Link to={`/posts/${id}/update`}>
+                <button>Update Post</button>
+              </Link>
             </section>
           </div>
         </div>

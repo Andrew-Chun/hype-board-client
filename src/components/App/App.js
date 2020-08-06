@@ -11,6 +11,7 @@ import ChangePassword from '../ChangePassword/ChangePassword'
 import PostCreate from '../Posts/PostCreate'
 import PostIndex from '../Posts/PostIndex'
 import PostShow from '../Posts/PostShow'
+import PostUpdate from '../Posts/PostUpdate'
 
 class App extends Component {
   constructor () {
@@ -70,6 +71,9 @@ class App extends Component {
             this.state.posts.find(post => post.id === match.params.id)
             return <PostShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id/update' render={({ match }) => (
+            <PostUpdate msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
         </main>
       </Fragment>
     )
