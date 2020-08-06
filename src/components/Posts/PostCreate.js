@@ -39,7 +39,7 @@ class PostCreate extends React.Component {
 
     })
       .then(() => msgAlert({
-        heading: 'Event Create Success',
+        heading: 'Post Create Success',
         message: messages.postsCreateSuccess,
         variant: 'Success'
       }))

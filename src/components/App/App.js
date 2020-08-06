@@ -12,6 +12,7 @@ import PostCreate from '../Posts/PostCreate'
 import PostIndex from '../Posts/PostIndex'
 import PostShow from '../Posts/PostShow'
 import PostUpdate from '../Posts/PostUpdate'
+import CommentCreate from '../Comments/CommentCreate'
 
 class App extends Component {
   constructor () {
@@ -73,6 +74,9 @@ class App extends Component {
           }} />
           <AuthenticatedRoute user={user} exact path='/posts/:id/update' render={({ match }) => (
             <PostUpdate msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id/comments' render={() => (
+            <CommentCreate msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
       </Fragment>

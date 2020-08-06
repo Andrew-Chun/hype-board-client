@@ -6,6 +6,7 @@ import apiUrl from '../../apiConfig'
 class PostShow extends React.Component {
   state = {
     post: null,
+    comments: [],
     deleted: false
   }
 
@@ -22,6 +23,21 @@ class PostShow extends React.Component {
       .then(response => {
         this.setState({
           post: response.data
+        })
+      })
+      .catch(console.error)
+
+    axios({
+      method: 'GET',
+      url: `${apiUrl}/comments/`,
+      headers: {
+        'Authorization': `Token ${user.token}`
+      }
+    })
+      .then(response => {
+        console.log(response)
+        this.setState({
+          comments: response.data
         })
       })
       .catch(console.error)
@@ -77,6 +93,9 @@ class PostShow extends React.Component {
               <button onClick={this.deletePost}>Delete Post</button>
               <Link to={`/posts/${id}/update`}>
                 <button>Update Post</button>
+              </Link>
+              <Link to={`/posts/${id}/comments`}>
+                <button>Add a Comment</button>
               </Link>
             </section>
           </div>
