@@ -9,6 +9,7 @@ class PostIndex extends React.Component {
 
   componentDidMount () {
     const { setPosts, user } = this.props
+    console.log(user)
     axios({
       method: 'GET',
       url: `${apiConfig}/posts/`,
@@ -17,8 +18,9 @@ class PostIndex extends React.Component {
       }
     })
       .then(response => {
+        console.log(response.data)
         this.setState({
-          posts: response.data.posts
+          posts: response.data
         })
         setPosts(response.data.posts)
       })
@@ -37,7 +39,7 @@ class PostIndex extends React.Component {
             <ul>
               {this.state.posts.map(post => {
                 return (
-                  <li key={post._id}>
+                  <li key={post.id}>
                     <h4>{post.title}</h4>
                     <h4>{post.body}</h4>
                     <h4>{post.created_at}</h4>

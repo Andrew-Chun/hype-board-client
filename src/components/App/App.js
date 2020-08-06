@@ -62,7 +62,7 @@ class App extends Component {
           <AuthenticatedRoute user={user} path='/create-post' render={() => (
             <PostCreate msgAlert={this.msgAlert} user={user} />
           )} />
-          <Route user={user} path='/posts' render={() => (
+          <AuthenticatedRoute user={user} path='/posts' render={() => (
             <PostIndex setPosts={this.setPosts} msgAlert={this.msgAlert} user={user} />
           )} />
         </main>
