@@ -13,6 +13,7 @@ import PostIndex from '../Posts/PostIndex'
 import PostShow from '../Posts/PostShow'
 import PostUpdate from '../Posts/PostUpdate'
 import CommentCreate from '../Comments/CommentCreate'
+import CommentShow from '../Comments/CommentShow'
 import UserIndex from '../Users/UserIndex'
 
 class App extends Component {
@@ -22,6 +23,7 @@ class App extends Component {
     this.state = {
       user: null,
       posts: [],
+      comments: [],
       users: [],
       msgAlerts: []
     }
@@ -30,6 +32,8 @@ class App extends Component {
   setUser = user => this.setState({ user })
 
   setPosts = posts => this.setState({ posts: posts })
+
+  setComments = comments => this.setState({ comments: comments })
 
   setUsers = users => this.setState({ users: users })
 
@@ -74,14 +78,18 @@ class App extends Component {
           )} />
           <AuthenticatedRoute user={user} exact path='/posts/:id' render={({ match }) => {
             this.state.posts.find(post => post.id === match.params.id)
-            return <PostShow msgAlert={this.msgAlert} match={match} user={user} />
+            return <PostShow setComments={this.setComments} msgAlert={this.msgAlert} match={match} user={user} />
           }} />
           <AuthenticatedRoute user={user} exact path='/posts/:id/update' render={({ match }) => (
             <PostUpdate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/posts/:id/comments' render={({ match }) => {
+          <AuthenticatedRoute user={user} path='/posts/:id/comments' render={({ match }) => {
             this.state.posts.find(post => post.id === match.params.id)
             return <CommentCreate msgAlert={this.msgAlert} match={match} user={user} />
+          }} />
+          <AuthenticatedRoute user={user} exact path='/comments/:id' render={({ match }) => {
+            this.state.comments.find(comment => comment.id === match.params.id)
+            return <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
           <AuthenticatedRoute user={user} exact path='/users' render={() => (
             <UserIndex setUsers={this.setUsers} msgAlert={this.msgAlert} user={user} />

@@ -1,7 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import { Link } from 'react-router-dom'
-import apiConfig from '../../apiConfig'
+import apiUrl from '../../apiConfig'
 
 class PostIndex extends React.Component {
   state = {
@@ -10,10 +10,9 @@ class PostIndex extends React.Component {
 
   componentDidMount () {
     const { setPosts, user } = this.props
-    console.log(user)
     axios({
       method: 'GET',
-      url: `${apiConfig}/posts/`,
+      url: `${apiUrl}/posts/`,
       headers: {
         'Authorization': `Token ${user.token}`
       }

@@ -6,16 +6,16 @@ import apiUrl from '../../apiConfig'
 class PostShow extends React.Component {
   state = {
     post: null,
+    postId: this.props.match.params.id,
     comments: [],
     deleted: false
   }
 
   componentDidMount () {
-    const id = this.props.match.params.id
-    const { user } = this.props
+    const { setComments, user } = this.props
     axios({
       method: 'GET',
-      url: `${apiUrl}/posts/${id}`,
+      url: `${apiUrl}/posts/${this.state.postId}`,
       headers: {
         'Authorization': `Token ${user.token}`
       }
@@ -35,21 +35,19 @@ class PostShow extends React.Component {
       }
     })
       .then(response => {
-        console.log(response)
         this.setState({
           comments: response.data
         })
+        setComments(response.data)
       })
       .catch(console.error)
   }
 
   deletePost = () => {
-    const id = this.props.match.params.id
     const { msgAlert, user } = this.props
-    console.log(user)
     axios({
       method: 'DELETE',
-      url: `${apiUrl}/posts/${id}/`,
+      url: `${apiUrl}/posts/${this.state.postId}/`,
       headers: {
         'Authorization': `Token ${user.token}`
       }
@@ -73,7 +71,7 @@ class PostShow extends React.Component {
   }
 
   render () {
-    const id = this.props.match.params.id
+    // const postId = this.props.match.id
     if (this.state.deleted === true) {
       return <Redirect to='/posts' />
     }
@@ -91,39 +89,60 @@ class PostShow extends React.Component {
               <h4>{this.state.post.created_at}</h4>
               <h4>{this.state.post.updated_at}</h4>
               <button onClick={this.deletePost}>Delete Post</button>
-              <Link to={`/posts/${id}/update`}>
+              <Link to={`/posts/${this.state.postId}/update`}>
                 <button>Update Post</button>
               </Link>
-              <Link to={`/posts/${id}/comments`}>
+              <Link to={`/posts/${this.state.postId}/comments`}>
                 <button>Add a Comment</button>
               </Link>
-            </section>
-            <section className="comments">
-              <h2>Comments</h2>
-              <div className="row">
-                <div className="col-sm-10 col-md-8 mx-auto mt-5 comment-index">
-                  <ul>
-                    {this.state.comments.map(comment => {
-                      return (
-                        <li key={comment.id}>
-                          <h4>{comment.body}</h4>
-                          <h4>{comment.owner.email}</h4>
-                          <h6>{comment.created_at}</h6>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
             </section>
           </div>
         </div>
       )
     }
+
+    // let jsx2
+    // if (this.state.comments.findIndex((comment) => comment.post_id === this.state.postId) === -1) {
+    //   console.log(this.state.comments.findIndex((comment) => comment.post_id === this.state.postId) === -1)
+    //   jsx2 = <h3>No Comments</h3>
+    // } else {
+    const comments = this.state.comments.filter(comment => {
+      console.log(comment.post_id)
+      console.log(this.state.postId)
+      return comment.post_id === this.state.postId
+    })
+    console.log(comments)
+    const jsx2 = (
+      <section className="comments">
+        <h2>Comments</h2>
+        <div className="row">
+          <div className="col-sm-10 col-md-8 mx-auto mt-5 comment-index">
+            <ul>
+              {this.state.comments.map(comment => {
+                // console.log(comment.post_id)
+                // console.log(this.state.postId)
+                return (
+                  <li key={comment.id}>
+                    <h4>{comment.body}</h4>
+                    <h4>{comment.owner.email}</h4>
+                    <h6>{comment.created_at}</h6>
+                    <h6>PostID:{comment.post_id}</h6>
+                  </li>
+                )
+              }
+              )}
+            </ul>
+          </div>
+        </div>
+      </section>
+    )
+    // }
+
     return (
       <div className="post-show">
         <h2>Individual Post</h2>
         {jsx}
+        {jsx2}
       </div>
     )
   }
