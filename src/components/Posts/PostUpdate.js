@@ -35,6 +35,7 @@ class PostUpdate extends React.Component {
     postCopy[postKey] = value
     this.setState({ post: postCopy })
   }
+
   handleSubmit = (post) => {
     post.preventDefault()
     const id = this.props.match.params.id

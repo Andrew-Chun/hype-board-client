@@ -85,7 +85,7 @@ class PostShow extends React.Component {
       jsx = (
         <div className="row post-show">
           <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <section>
+            <section className="post-details">
               <h3>{this.state.post.title}</h3>
               <h4>{this.state.post.body}</h4>
               <h4>{this.state.post.created_at}</h4>
@@ -97,6 +97,24 @@ class PostShow extends React.Component {
               <Link to={`/posts/${id}/comments`}>
                 <button>Add a Comment</button>
               </Link>
+            </section>
+            <section className="comments">
+              <h2>Comments</h2>
+              <div className="row">
+                <div className="col-sm-10 col-md-8 mx-auto mt-5 comment-index">
+                  <ul>
+                    {this.state.comments.map(comment => {
+                      return (
+                        <li key={comment.id}>
+                          <h4>{comment.body}</h4>
+                          <h4>{comment.owner.email}</h4>
+                          <h6>{comment.created_at}</h6>
+                        </li>
+                      )
+                    })}
+                  </ul>
+                </div>
+              </div>
             </section>
           </div>
         </div>

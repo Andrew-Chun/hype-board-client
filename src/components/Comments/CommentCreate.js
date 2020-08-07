@@ -3,13 +3,15 @@ import axios from 'axios'
 import apiConfig from '../../apiConfig'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
+import { Redirect } from 'react-router-dom'
 import messages from '../AutoDismissAlert/messages'
 
 class CommentCreate extends React.Component {
   state = {
     comment: {
       body: ''
-    }
+    },
+    commeneted: false
   }
   handleInputChange = (comment) => {
     const commentKey = comment.target.name
@@ -20,7 +22,7 @@ class CommentCreate extends React.Component {
   }
   handleSubmit = (comment) => {
     comment.preventDefault()
-    const { msgAlert, user } = this.props
+    const { msgAlert, match, user } = this.props
     axios({
       method: 'POST',
       url: `${apiConfig}/comments/`,
@@ -28,9 +30,11 @@ class CommentCreate extends React.Component {
         'Authorization': `Token ${user.token}`
       },
       data: {
-        user_id: user.id,
-        // post_id: ,
-        comment: this.state.comment.body
+        comment: {
+          body: this.state.comment.body,
+          user_id: user.id,
+          post_id: match.params.id
+        }
       }
 
     })
@@ -46,10 +50,20 @@ class CommentCreate extends React.Component {
           }
         })
       })
+      .then(response => {
+        this.setState({
+          commented: true
+        })
+      })
       .catch(console.error)
   }
 
   render () {
+    const id = this.props.match.params.id
+    if (this.state.commented === true) {
+      return <Redirect to={`/posts/${id}`} />
+    }
+
     return (
       <div className="row comment-create">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
