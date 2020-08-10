@@ -1,6 +1,6 @@
 import React from 'react'
 import axios from 'axios'
-// import { Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import apiConfig from '../../apiConfig'
 
 class UserIndex extends React.Component {
@@ -38,7 +38,9 @@ class UserIndex extends React.Component {
               {this.state.users.map(user => {
                 return (
                   <li key={user.id}>
-                    <h4>{user.email}</h4>
+                    <Link to={`/users/${user.id}`}>
+                      <h4>{user.email}</h4>
+                    </Link>
                   </li>
                 )
               })}

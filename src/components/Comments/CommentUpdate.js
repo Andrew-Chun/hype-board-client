@@ -34,7 +34,6 @@ class CommentUpdate extends React.Component {
     const value = comment.target.value
     const commentCopy = Object.assign({}, this.state.comment)
     commentCopy[commentKey] = value
-    console.log(commentCopy)
     this.setState({ comment: commentCopy })
   }
 
@@ -70,7 +69,6 @@ class CommentUpdate extends React.Component {
   }
 
   render () {
-    // const id = this.props.match.params.id
     if (this.state.updated) {
       return <Redirect to={`/posts/${this.state.comment.post_id}`} />
     }

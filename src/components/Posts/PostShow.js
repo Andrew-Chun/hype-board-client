@@ -71,7 +71,6 @@ class PostShow extends React.Component {
   }
 
   render () {
-    // const postId = this.props.match.id
     if (this.state.deleted === true) {
       return <Redirect to='/posts' />
     }

@@ -16,15 +16,10 @@ class PostCreate extends React.Component {
   }
 
   handleInputChange = (post) => {
-    // get the post key from the input name field
     const postKey = post.target.name
-    // get the input value that the user typed in
     const value = post.target.value
-    // make a copy of the current state
     const postCopy = Object.assign({}, this.state.post)
-    // update the copy with the new user input
     postCopy[postKey] = value
-    // update the state with our updated copy
     this.setState({ post: postCopy })
   }
 

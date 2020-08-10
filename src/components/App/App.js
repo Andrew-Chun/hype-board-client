@@ -16,6 +16,7 @@ import CommentCreate from '../Comments/CommentCreate'
 import CommentShow from '../Comments/CommentShow'
 import CommentUpdate from '../Comments/CommentUpdate'
 import UserIndex from '../Users/UserIndex'
+import UserShow from '../Users/UserShow'
 
 class App extends Component {
   constructor () {
@@ -93,12 +94,15 @@ class App extends Component {
             return <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
           <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id/update' render={({ match }) => (
-            // this.state.comments.find(comment => comment.id === match.params.id)
             <CommentUpdate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/users' render={() => (
             <UserIndex setUsers={this.setUsers} msgAlert={this.msgAlert} user={user} />
           )} />
+          <AuthenticatedRoute user={user} exact path='/users/:id' render={({ match }) => {
+            this.state.users.find(user => user.id === match.params.id)
+            return <UserShow msgAlert={this.msgAlert} match={match} user={user} />
+          }} />
         </main>
       </Fragment>
     )

@@ -25,6 +25,7 @@ class PostIndex extends React.Component {
       })
       .catch(console.error)
   }
+
   render () {
     let jsx
     if (this.state.posts === null) {
