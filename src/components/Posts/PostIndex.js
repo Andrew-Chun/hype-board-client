@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Card, CardDeck } from 'react-bootstrap'
 import { Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 
@@ -34,23 +35,24 @@ class PostIndex extends React.Component {
       jsx = <p>No posts, please add a post</p>
     } else {
       jsx = (
-        <div className="row">
-          <div className="col-sm-10 col-md-8 mx-auto mt-5 post-index">
-            <ul>
-              {this.state.posts.map(post => {
-                return (
-                  <li key={post.id}>
-                    <h4><Link to={`/posts/${post.id}`}>{post.title}</Link></h4>
-                    <h4>{post.body}</h4>
-                    <h4>{post.owner.email}</h4>
-                    <h6>Date Posted: {post.created_at}</h6>
-                    <h6>Updated at: {post.updated_at}</h6>
-                  </li>
-                )
-              })}
-            </ul>
-          </div>
-        </div>
+        <CardDeck className="card-deck">
+          {this.state.posts.map(post => {
+            return (
+              <Card key={post.id}>
+                <Card.Body>
+                  <Card.Title><Link to={`/posts/${post.id}`}>{post.title}</Link></Card.Title>
+                  <Card.Text>
+                    {post.body}
+                  </Card.Text>
+                  <Card.Footer>
+                    <p>By: {post.owner.email}</p>
+                    <small className="text-muted">Last updated {post.updated_at}</small>
+                  </Card.Footer>
+                </Card.Body>
+              </Card>
+            )
+          })}
+        </CardDeck>
       )
     }
 
