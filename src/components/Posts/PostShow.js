@@ -106,12 +106,12 @@ class PostShow extends React.Component {
     //   console.log(this.state.comments.findIndex((comment) => comment.post_id === this.state.postId) === -1)
     //   jsx2 = <h3>No Comments</h3>
     // } else {
-    const comments = this.state.comments.filter(comment => {
-      console.log(comment.post_id)
-      console.log(this.state.postId)
-      return comment.post_id === this.state.postId
-    })
-    console.log(comments)
+    // const comments = this.state.comments.filter(comment => {
+    //   console.log(comment.post_id)
+    //   console.log(this.state.postId)
+    //   return comment.post_id === this.state.postId
+    // })
+    // console.log(comments)
     const jsx2 = (
       <section className="comments">
         <h2>Comments</h2>
@@ -123,7 +123,9 @@ class PostShow extends React.Component {
                 // console.log(this.state.postId)
                 return (
                   <li key={comment.id}>
-                    <h4>{comment.body}</h4>
+                    <Link to={`/posts/${this.state.postId}/comments/${comment.id}`}>
+                      <h4>{comment.body}</h4>
+                    </Link>
                     <h4>{comment.owner.email}</h4>
                     <h6>{comment.created_at}</h6>
                     <h6>PostID:{comment.post_id}</h6>

@@ -32,7 +32,7 @@ class CommentCreate extends React.Component {
       data: {
         comment: {
           body: this.state.comment.body,
-          user_id: user.id,
+          owner_id: user.id,
           post_id: match.params.id
         }
       }

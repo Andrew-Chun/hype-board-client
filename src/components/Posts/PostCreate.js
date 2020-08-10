@@ -1,6 +1,7 @@
 import React from 'react'
 import axios from 'axios'
 import apiConfig from '../../apiConfig'
+import { Redirect } from 'react-router-dom'
 import Form from 'react-bootstrap/Form'
 import Button from 'react-bootstrap/Button'
 import messages from '../AutoDismissAlert/messages'
@@ -10,8 +11,10 @@ class PostCreate extends React.Component {
     post: {
       title: '',
       body: ''
-    }
+    },
+    created: false
   }
+
   handleInputChange = (post) => {
     // get the post key from the input name field
     const postKey = post.target.name
@@ -24,6 +27,7 @@ class PostCreate extends React.Component {
     // update the state with our updated copy
     this.setState({ post: postCopy })
   }
+
   handleSubmit = (post) => {
     post.preventDefault()
     const { msgAlert, user } = this.props
@@ -48,13 +52,17 @@ class PostCreate extends React.Component {
           post: {
             title: '',
             body: ''
-          }
+          },
+          created: true
         })
       })
       .catch(console.error)
   }
 
   render () {
+    if (this.state.created === true) {
+      return <Redirect to={'/posts'}/>
+    }
     return (
       <div className="row post-create">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">

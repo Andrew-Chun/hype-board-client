@@ -5,25 +5,23 @@ import apiUrl from '../../apiConfig'
 
 class CommentShow extends React.Component {
   state = {
-    post: null,
-    comments: [],
+    comment: null,
     deleted: false
   }
 
   componentDidMount () {
-    // const id = this.props.match.params.id
+    const id = this.props.match.params.id
     const { user } = this.props
     axios({
       method: 'GET',
-      url: `${apiUrl}/comments/`,
+      url: `${apiUrl}/comments/${id}`,
       headers: {
         'Authorization': `Token ${user.token}`
       }
     })
       .then(response => {
-        console.log(response)
         this.setState({
-          comments: response.data
+          comment: response.data
         })
       })
       .catch(console.error)
@@ -61,53 +59,32 @@ class CommentShow extends React.Component {
   render () {
     const id = this.props.match.params.id
     if (this.state.deleted === true) {
-      return <Redirect to='/comments' />
+      return <Redirect to={`/posts/${this.state.comment.post_id}`}/>
     }
-
+    console.log(this.state.comment)
     let jsx
-    if (this.state.post === null) {
+    if (this.state.comment === null) {
       jsx = <p>Loading...</p>
     } else {
       jsx = (
-        <div className="row post-show">
+        <div className="row comment-show">
           <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <section className="post-details">
-              <h3>{this.state.post.title}</h3>
-              <h4>{this.state.post.body}</h4>
-              <h4>{this.state.post.created_at}</h4>
-              <h4>{this.state.post.updated_at}</h4>
+            <section className="comment-details">
+              <h3>{this.state.comment.body}</h3>
+              <h3>{this.state.comment.owner.email}</h3>
+              <h4>{this.state.comment.created_at}</h4>
+              <h4>{this.state.comment.updated_at}</h4>
               <button onClick={this.deleteComment}>Delete Comment</button>
-              <Link to={`/comments/${id}/update`}>
+              <Link to={`/posts/${this.state.comment.post_id}/comments/${id}/update`}>
                 <button>Update Comment</button>
               </Link>
-              <Link to={`/comments/${id}/comments`}>
-                <button>Add a Comment</button>
-              </Link>
-            </section>
-            <section className="comments">
-              <h2>Comments</h2>
-              <div className="row">
-                <div className="col-sm-10 col-md-8 mx-auto mt-5 comment-index">
-                  <ul>
-                    {this.state.comments.map(comment => {
-                      return (
-                        <li key={comment.id}>
-                          <h4>{comment.body}</h4>
-                          <h4>{comment.owner}</h4>
-                          <h6>{comment.created_at}</h6>
-                        </li>
-                      )
-                    })}
-                  </ul>
-                </div>
-              </div>
             </section>
           </div>
         </div>
       )
     }
     return (
-      <div className="post-show">
+      <div className="comment-show">
         <h2>Comment</h2>
         {jsx}
       </div>
