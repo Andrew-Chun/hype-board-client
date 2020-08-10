@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { Card, ListGroup, Button } from 'react-bootstrap'
 import { Redirect, Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
 
@@ -80,24 +81,21 @@ class PostShow extends React.Component {
       jsx = <p>Loading...</p>
     } else {
       jsx = (
-        <div className="row post-show">
-          <div className="col-sm-10 col-md-8 mx-auto mt-5">
-            <section className="post-details">
-              <h3>{this.state.post.title}</h3>
-              <h3>{this.state.post.body}</h3>
-              <h4>{this.state.post.owner.email}</h4>
-              <h6>{this.state.post.created_at}</h6>
-              <h6>{this.state.post.updated_at}</h6>
-              <button onClick={this.deletePost}>Delete Post</button>
-              <Link to={`/posts/${this.state.postId}/update`}>
-                <button>Update Post</button>
-              </Link>
-              <Link to={`/posts/${this.state.postId}/comments`}>
-                <button>Add a Comment</button>
-              </Link>
-            </section>
-          </div>
-        </div>
+        <Card style={{ width: '50vw' }}>
+          <Card.Body>
+            <Card.Title>{this.state.post.title}</Card.Title>
+            <Card.Text>
+              {this.state.post.body}
+            </Card.Text>
+            <Card.Footer>
+              <p>By: {this.state.post.owner.email}</p>
+              <small className="text-muted">Last updated {this.state.post.updated_at}</small>
+            </Card.Footer>
+            <Card.Link href={`#/posts/${this.state.postId}/update`}>Update Post</Card.Link>
+            <Card.Link href={`#/posts/${this.state.postId}/comments`}>Add a Comment</Card.Link>
+            <Button onClick={this.deletePost}>Delete Post</Button>
+          </Card.Body>
+        </Card>
       )
     }
 
@@ -106,30 +104,24 @@ class PostShow extends React.Component {
       jsx2 = <h3>No Comments</h3>
     } else {
       jsx2 = (
-        <section className="comments">
-          <h2>Comments</h2>
-          <div className="row">
-            <div className="col-sm-10 col-md-8 mx-auto mt-5 comment-index">
-              <ul>
-                {this.state.comments.map(comment => {
-                  if (comment.post_id === parseInt(this.state.postId)) {
-                    return (
-                      <li key={comment.id}>
-                        <Link to={`/posts/${this.state.postId}/comments/${comment.id}`}>
-                          <h4>{comment.body}</h4>
-                        </Link>
-                        <h4>{comment.owner.email}</h4>
-                        <h6>{comment.created_at}</h6>
-                        <h6>PostID:{comment.post_id}</h6>
-                      </li>
-                    )
-                  }
-                }
-                )}
-              </ul>
-            </div>
-          </div>
-        </section>
+        <Card style={{ width: '50vw' }}>
+          <Card.Header>Comments</Card.Header>
+          <ListGroup variant="flush">
+            {this.state.comments.map(comment => {
+              if (comment.post_id === parseInt(this.state.postId)) {
+                return (
+                  <ListGroup.Item key={comment.id}>
+                    <Link to={`/posts/${this.state.postId}/comments/${comment.id}`}>
+                      <h4>{comment.body}</h4>
+                    </Link>
+                    <p>By: {comment.owner.email}</p>
+                    <small className="text-muted">Updated at: {comment.updated_at}</small>
+                  </ListGroup.Item>
+                )
+              }
+            })}
+          </ListGroup>
+        </Card>
       )
     }
 

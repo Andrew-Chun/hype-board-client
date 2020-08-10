@@ -65,6 +65,11 @@ class CommentUpdate extends React.Component {
         message: messages.commentsUpdateSuccess,
         variant: 'Success'
       }))
+      .catch(() => msgAlert({
+        heading: 'Failed to Delete Comment',
+        message: messages.commentUpdateFailure,
+        variant: 'Failure'
+      }))
       .catch(console.error)
   }
 

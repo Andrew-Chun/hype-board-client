@@ -9,5 +9,6 @@ export default {
   postsCreateSuccess: 'Post successfully created!',
   commentCreateSuccess: 'Comment successfully created!',
   commentUpdateSuccess: 'Comment updated successfully!',
+  commentUpdateFailure: 'You are not the owner of this comment!',
   commentDeleteFailure: 'You are not the owner of this comment!'
 }
