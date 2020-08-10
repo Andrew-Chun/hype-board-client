@@ -7,5 +7,6 @@ export default {
   changePasswordSuccess: 'Password changed successfully!',
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   postsCreateSuccess: 'Post successfully created!',
-  commentsCreateSuccess: 'Comment successfully created!'
+  commentCreateSuccess: 'Comment successfully created!',
+  commentUpdateSuccess: 'Comment updated successfully!'
 }

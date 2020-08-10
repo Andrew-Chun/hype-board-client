@@ -40,7 +40,7 @@ class CommentCreate extends React.Component {
     })
       .then(() => msgAlert({
         heading: 'Comment Success',
-        message: messages.commentsCreateSuccess,
+        message: messages.commentCreateSuccess,
         variant: 'Success'
       }))
       .then(res => {

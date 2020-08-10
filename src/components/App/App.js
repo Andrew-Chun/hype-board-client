@@ -92,7 +92,7 @@ class App extends Component {
             this.state.comments.find(comment => comment.id === match.params.id)
             return <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
-          <AuthenticatedRoute user={user} exact path='posts/:id/comments/:id/update' render={({ match }) => {
+          <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id/update' render={({ match }) => {
             this.state.comments.find(comment => comment.id === match.params.id)
             return <CommentUpdate msgAlert={this.msgAlert} match={match} user={user} />
           }} />
