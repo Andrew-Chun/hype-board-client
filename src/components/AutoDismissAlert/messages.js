@@ -8,5 +8,6 @@ export default {
   changePasswordFailure: 'Failed to change passwords. Check your old password and try again.',
   postsCreateSuccess: 'Post successfully created!',
   commentCreateSuccess: 'Comment successfully created!',
-  commentUpdateSuccess: 'Comment updated successfully!'
+  commentUpdateSuccess: 'Comment updated successfully!',
+  commentDeleteFailure: 'You are not the owner of this comment!'
 }

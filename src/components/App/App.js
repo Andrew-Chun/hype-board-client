@@ -92,10 +92,10 @@ class App extends Component {
             this.state.comments.find(comment => comment.id === match.params.id)
             return <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
           }} />
-          <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id/update' render={({ match }) => {
-            this.state.comments.find(comment => comment.id === match.params.id)
-            return <CommentUpdate msgAlert={this.msgAlert} match={match} user={user} />
-          }} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id/update' render={({ match }) => (
+            // this.state.comments.find(comment => comment.id === match.params.id)
+            <CommentUpdate msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/users' render={() => (
             <UserIndex setUsers={this.setUsers} msgAlert={this.msgAlert} user={user} />
           )} />

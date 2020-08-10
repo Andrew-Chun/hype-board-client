@@ -70,33 +70,13 @@ class PostCreate extends React.Component {
           <Form onSubmit={this.handleSubmit}>
             <Form.Group controlId="postName">
               <Form.Label>Title</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="title"
-                value={this.state.post.title}
-                placeholder="Title of Post"
-                onChange={this.handleInputChange}
-              />
+              <Form.Control required type="text" name="title" value={this.state.post.title} placeholder="Title of Post" onChange={this.handleInputChange}/>
             </Form.Group>
             <Form.Group controlId="place">
               <Form.Label>Body</Form.Label>
-              <Form.Control
-                required
-                type="text"
-                name="body"
-                value={this.state.post.body}
-                placeholder="Body text"
-                onChange={this.handleInputChange}
-              />
+              <Form.Control required type="text"name="body" value={this.state.post.body} placeholder="Body text" onChange={this.handleInputChange}/>
             </Form.Group>
-            <Button
-              className="btn"
-              variant="primary"
-              type="submit"
-            >
-              Submit
-            </Button>
+            <Button className="btn" variant="primary" type="submit">Submit</Button>
           </Form>
         </div>
       </div>

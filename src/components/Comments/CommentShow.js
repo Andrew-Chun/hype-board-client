@@ -2,6 +2,7 @@ import React from 'react'
 import axios from 'axios'
 import { Redirect, Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 
 class CommentShow extends React.Component {
   state = {
@@ -50,7 +51,7 @@ class CommentShow extends React.Component {
       })
       .catch(() => msgAlert({
         heading: 'Failed to Delete Comment',
-        message: 'Message Failure',
+        message: messages.commentDeleteFailure,
         variant: 'Failure'
       }))
       .catch(console.error)
