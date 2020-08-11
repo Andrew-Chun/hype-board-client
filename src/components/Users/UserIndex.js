@@ -10,7 +10,6 @@ class UserIndex extends React.Component {
 
   componentDidMount () {
     const { setUsers, user } = this.props
-    console.log(user)
     axios({
       method: 'GET',
       url: `${apiConfig}/users/`,

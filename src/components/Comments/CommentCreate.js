@@ -43,14 +43,14 @@ class CommentCreate extends React.Component {
         message: messages.commentCreateSuccess,
         variant: 'Success'
       }))
-      .then(res => {
+      .then(() => {
         this.setState({
           comment: {
             body: ''
           }
         })
       })
-      .then(response => {
+      .then(() => {
         this.setState({
           commented: true
         })

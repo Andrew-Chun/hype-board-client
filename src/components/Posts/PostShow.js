@@ -1,8 +1,9 @@
 import React from 'react'
 import axios from 'axios'
-import { Card, ListGroup, Button } from 'react-bootstrap'
+import { Card, ListGroup } from 'react-bootstrap'
 import { Redirect, Link } from 'react-router-dom'
 import apiUrl from '../../apiConfig'
+import messages from '../AutoDismissAlert/messages'
 
 class PostShow extends React.Component {
   state = {
@@ -65,7 +66,7 @@ class PostShow extends React.Component {
       })
       .catch(() => msgAlert({
         heading: 'Failed to Delete Post',
-        message: 'Message Failure',
+        message: messages.postsDeleteFailure,
         variant: 'Failure'
       }))
       .catch(console.error)
@@ -93,7 +94,7 @@ class PostShow extends React.Component {
             </Card.Footer>
             <Card.Link href={`#/posts/${this.state.postId}/update`}>Update Post</Card.Link>
             <Card.Link href={`#/posts/${this.state.postId}/comments`}>Add a Comment</Card.Link>
-            <Button onClick={this.deletePost}>Delete Post</Button>
+            <Card.Link href='#/posts' onClick={this.deletePost}>Delete Post</Card.Link>
           </Card.Body>
         </Card>
       )
@@ -127,7 +128,6 @@ class PostShow extends React.Component {
 
     return (
       <div className="post-show">
-        <h2>Individual Post</h2>
         {jsx}
         {jsx2}
       </div>

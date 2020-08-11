@@ -58,7 +58,6 @@ class PostIndex extends React.Component {
 
     return (
       <div className="post-index">
-        <h2>All Posts</h2>
         {jsx}
       </div>
     )

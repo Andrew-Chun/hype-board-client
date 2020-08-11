@@ -61,6 +61,11 @@ class PostUpdate extends React.Component {
         message: messages.postsUpdateSuccess,
         variant: 'Success'
       }))
+      .catch(() => msgAlert({
+        heading: 'Failed to Update Post',
+        message: messages.postsUpdateFailure,
+        variant: 'Failure'
+      }))
       .catch(console.error)
   }
 

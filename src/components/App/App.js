@@ -78,21 +78,18 @@ class App extends Component {
           <AuthenticatedRoute user={user} exact path='/posts' render={() => (
             <PostIndex setPosts={this.setPosts} msgAlert={this.msgAlert} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/posts/:id' render={({ match }) => {
-            this.state.posts.find(post => post.id === match.params.id)
-            return <PostShow setComments={this.setComments} msgAlert={this.msgAlert} match={match} user={user} />
-          }} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id' render={({ match }) => (
+            <PostShow setComments={this.setComments} msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/posts/:id/update' render={({ match }) => (
             <PostUpdate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
-          <AuthenticatedRoute user={user} exact path='/posts/:id/comments' render={({ match }) => {
-            this.state.posts.find(post => post.id === match.params.id)
-            return <CommentCreate msgAlert={this.msgAlert} match={match} user={user} />
-          }} />
-          <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id' render={({ match }) => {
-            this.state.comments.find(comment => comment.id === match.params.id)
-            return <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
-          }} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id/comments' render={({ match }) => (
+            <CommentCreate msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
+          <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id' render={({ match }) => (
+            <CommentShow msgAlert={this.msgAlert} match={match} user={user} />
+          )} />
           <AuthenticatedRoute user={user} exact path='/posts/:id/comments/:id/update' render={({ match }) => (
             <CommentUpdate msgAlert={this.msgAlert} match={match} user={user} />
           )} />
@@ -100,8 +97,8 @@ class App extends Component {
             <UserIndex setUsers={this.setUsers} msgAlert={this.msgAlert} user={user} />
           )} />
           <AuthenticatedRoute user={user} exact path='/users/:id' render={({ match }) => {
-            this.state.users.find(user => user.id === match.params.id)
-            return <UserShow msgAlert={this.msgAlert} match={match} user={user} />
+            const selectedUser = this.state.users.find(user => user.id.toString() === match.params.id)
+            return <UserShow msgAlert={this.msgAlert} email={selectedUser.email} match={match} user={user} />
           }} />
         </main>
       </Fragment>
