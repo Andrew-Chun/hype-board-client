@@ -2,14 +2,17 @@
 
 # Hype-Board Client
 
-Hype-Board is a message board application built using a React frontend framework.
-Users on this platform can create an account to make posts and comments.
+Hype-Board is a custom-built message board application built using a React frontend framework.
+
+Users on this platform can create an account to make posts and comments hosted publicly on the forum.
+
+![alt text](https://i.imgur.com/9wh9jJD.png)
 
 ## Links
--   HypeBoard Repo:
+-   Deployed Client: https://andrew-chun.github.io/hype-board-client/
 
--   Deployed HypeBoard Client:
--   Deployed HypeBoard API:
+-   Hype-Board API Repo: https://github.com/Andrew-Chun/hype-board-api
+-   Deployed Hype-Board API: https://hype-board.herokuapp.com/
 
 ## List of Technologies Used
 -   HTML

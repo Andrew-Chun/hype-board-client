@@ -46,7 +46,7 @@ class PostIndex extends React.Component {
                   </Card.Text>
                   <Card.Footer>
                     <p>By: {post.owner.email}</p>
-                    <small className="text-muted">Last updated {post.updated_at}</small>
+                    <small className="text-muted">Last updated: {post.updated_at}</small>
                   </Card.Footer>
                 </Card.Body>
               </Card>
