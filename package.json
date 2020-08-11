@@ -1,6 +1,6 @@
 {
-  "name": "message-board-client",
-  "homepage": "https://Andrew-Chun.github.io/message-board-client",
+  "name": "hype-board-client",
+  "homepage": "https://Andrew-Chun.github.io/hype-board-client",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
