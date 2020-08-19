@@ -20,8 +20,8 @@ const unauthenticatedOptions = (
 )
 
 const Header = ({ user }) => (
-  <Navbar bg="primary" variant="dark" expand="md">
-    <Navbar.Brand href="#">
+  <Navbar className="navbar" variant="dark" expand="md">
+    <Navbar.Brand className="logo" href="#">
       Hype-Board
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
