@@ -62,9 +62,9 @@ Perhaps the most challenging part of this project was making API requests to a D
 -Allow users to tag posts
 
 ## Images
-App Screenshot:
-![Hype-Board Screenshot](https://i.imgur.com/9wh9jJD.png)
-![Hype-Board Screenshot2](https://i.imgur.com/qv8wQA5.png)
+App Screenshots:
+![Hype-Board Screenshot](https://i.imgur.com/eUtR7Vt.png)
+![Hype-Board Screenshot2](https://i.imgur.com/QwUWpyt.png)
 
 ![Hype-Board Landing Page](https://i.imgur.com/flcSDv2.png)
 
