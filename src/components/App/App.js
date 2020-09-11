@@ -4,8 +4,10 @@ import { Route } from 'react-router-dom'
 import AuthenticatedRoute from '../AuthenticatedRoute/AuthenticatedRoute'
 import AutoDismissAlert from '../AutoDismissAlert/AutoDismissAlert'
 import Header from '../Header/Header'
-import SignUp from '../SignUp/SignUp'
-import SignIn from '../SignIn/SignIn'
+// import SignUp from '../SignUp/SignUp'
+import SignUp2 from '../SignUp/SignUp2'
+import SignIn2 from '../SignIn/SignIn2'
+// import SignIn from '../SignIn/SignIn'
 import SignOut from '../SignOut/SignOut'
 import ChangePassword from '../ChangePassword/ChangePassword'
 import PostCreate from '../Posts/PostCreate'
@@ -60,11 +62,14 @@ class App extends Component {
           />
         ))}
         <main className="container">
-          <Route path='/sign-up' render={() => (
-            <SignUp msgAlert={this.msgAlert} setUser={this.setUser} />
+          <Route exact path='/' render={() => (
+            <SignIn2 msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
-          <Route path='/sign-in' render={() => (
-            <SignIn msgAlert={this.msgAlert} setUser={this.setUser} />
+          <Route exact path='/sign-in' render={() => (
+            <SignIn2 msgAlert={this.msgAlert} setUser={this.setUser} />
+          )} />
+          <Route exact path='/sign-up' render={() => (
+            <SignUp2 msgAlert={this.msgAlert} setUser={this.setUser} />
           )} />
           <AuthenticatedRoute user={user} path='/sign-out' render={() => (
             <SignOut msgAlert={this.msgAlert} clearUser={this.clearUser} user={user} />

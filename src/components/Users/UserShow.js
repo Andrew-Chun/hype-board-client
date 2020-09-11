@@ -92,7 +92,7 @@ class UserShow extends React.Component {
 
     return (
       <div className="user-show">
-        <h1>Posts by: {email}</h1>
+        <h2>Posts by: {email}</h2>
         {jsx}
       </div>
     )

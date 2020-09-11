@@ -4,8 +4,8 @@ import Navbar from 'react-bootstrap/Navbar'
 
 const authenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#create-post">Create Post</Nav.Link>
-    <Nav.Link href="#posts">Index Posts</Nav.Link>
+    <Nav.Link href="#create-post">Create a post</Nav.Link>
+    <Nav.Link href="#posts">View Posts</Nav.Link>
     <Nav.Link href="#users">All Users</Nav.Link>
     <Nav.Link href="#change-password">Change Password</Nav.Link>
     <Nav.Link href="#sign-out">Sign Out</Nav.Link>
@@ -14,15 +14,15 @@ const authenticatedOptions = (
 
 const unauthenticatedOptions = (
   <Fragment>
-    <Nav.Link href="#sign-up">Sign Up</Nav.Link>
+    <Nav.Link className="" href="#sign-up">Sign Up</Nav.Link>
     <Nav.Link href="#sign-in">Sign In</Nav.Link>
   </Fragment>
 )
 
 const Header = ({ user }) => (
-  <Navbar className="navbar" variant="dark" expand="md">
+  <Navbar className="navbar" expand="md">
     <Navbar.Brand className="logo" href="#">
-      Hype-Board
+      HYPEBOARD
     </Navbar.Brand>
     <Navbar.Toggle aria-controls="basic-navbar-nav" />
     <Navbar.Collapse id="basic-navbar-nav">

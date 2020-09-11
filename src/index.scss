@@ -1,19 +1,89 @@
 @import '~bootstrap/scss/bootstrap';
+@import '~antd/dist/antd.css';
 
-$background-color: #fbe2e5;
-$navbar-color: #fabea7;
+$background-color: #ececec;
+$navbar-color: #fff;
+$navbar-border-color: #d9d9d9;
+$logo-color: #000;
+$login-color: #1890FF;
 
 body {
+  align-items: center;
   background: $background-color;
-  font-family: 'Bangers', cursive;
+  text-align: center;
 }
 
 .navbar {
   background: $navbar-color;
+  border: 1px solid $navbar-border-color;
+
+  >.logo {
+    color: $logo-color;
+    font-family: 'Share Tech Mono';
+    font-size: 24px;
+    padding-left: 150px;
+  }
+
+  >.navbar-collapse {
+    padding-right: 150px;
+
+    >.nav-link {
+      color: $logo-color;
+      font-family: 'Share Tech Mono';
+      font-size: 24px;
+    }
+  }
 }
 
-.logo {
-  font-size: 50px;
+h1 {
+  font-family: 'Share Tech Mono';
+  font-size: 48px;
+  margin-top: 50px;
+}
+
+.landing-description {
+  font-family: 'Source Sans Pro', sans-serif;
+}
+
+.login-form {
+  background: $navbar-color;
+  border-radius: 2px;
+  display: flex;
+  flex-direction: column;
+  height: 360px;
+  left: calc(50% - 330px/2);
+  padding: 24px;
+  position: absolute;
+  top: calc(50% - 360px/2 - 28px);
+  width: 330px;
+}
+
+.log-in-text {
+  flex: none;
+  font-size: 20px;
+  font-weight: bold;
+  margin: 0 24px;
+  order: 0;
+}
+
+.login-form-button {
+  background: $login-color;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.log-in-text2 {
+  font-size: 14px;
+}
+
+h2 {
+  font-family: 'Share Tech Mono';
+  font-weight: bold;
+  position: left;
+}
+
+.create-post {
+  position: left;
 }
 
 .card-deck {

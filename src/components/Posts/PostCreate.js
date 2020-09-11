@@ -61,15 +61,21 @@ class PostCreate extends React.Component {
     return (
       <div className="row post-create">
         <div className="col-sm-10 col-md-8 mx-auto mt-5">
-          <h1>Create Post</h1>
-          <Form onSubmit={this.handleSubmit}>
-            <Form.Group controlId="postName">
+          <h2>Create a post</h2>
+          <Form className="create-post" onSubmit={this.handleSubmit}>
+            <Form.Group controlId="title">
               <Form.Label>Title</Form.Label>
-              <Form.Control required type="text" name="title" value={this.state.post.title} placeholder="Title of Post" onChange={this.handleInputChange}/>
+              <Form.Control required type="text" name="title" value={this.state.post.title} onChange={this.handleInputChange} placeholder="Title of Post" />
+              <Form.Text muted>
+                Ex. My puppy did the coolest thing this morning!
+              </Form.Text>
             </Form.Group>
-            <Form.Group controlId="place">
-              <Form.Label>Body</Form.Label>
-              <Form.Control required type="text"name="body" value={this.state.post.body} placeholder="Body text" onChange={this.handleInputChange}/>
+            <Form.Group controlId="body">
+              <Form.Label>Description</Form.Label>
+              <Form.Control required as="textarea" rows="3" type="text" name="body" value={this.state.post.body} onChange={this.handleInputChange} placeholder="Tell us about it." />
+              <Form.Text muted>
+                Max 300 characters.
+              </Form.Text>
             </Form.Group>
             <Button className="btn" variant="primary" type="submit">Submit</Button>
           </Form>
