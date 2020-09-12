@@ -122,6 +122,7 @@ class PostShow extends React.Component {
               }
             })}
           </ListGroup>
+          <ListGroup></ListGroup>
         </Card>
       )
     }

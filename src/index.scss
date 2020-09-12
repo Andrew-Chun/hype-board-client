@@ -8,9 +8,7 @@ $logo-color: #000;
 $login-color: #1890FF;
 
 body {
-  align-items: center;
   background: $background-color;
-  text-align: center;
 }
 
 .navbar {
@@ -39,10 +37,12 @@ h1 {
   font-family: 'Share Tech Mono';
   font-size: 48px;
   margin-top: 50px;
+  text-align: center;
 }
 
 .landing-description {
   font-family: 'Source Sans Pro', sans-serif;
+  text-align: center;
 }
 
 .login-form {
@@ -76,14 +76,30 @@ h1 {
   font-size: 14px;
 }
 
+.create-a-post {
+  margin-top: 20px;
+  margin-left: calc(50% - 330px/2);
+  padding-left: 25px;
+}
+
 h2 {
-  font-family: 'Share Tech Mono';
+  font-family: 'Source Sans Pro', sans-serif;
   font-weight: bold;
-  position: left;
+  margin-left: 0;
+  text-align: left;
 }
 
 .create-post {
-  position: left;
+    border-radius: 2px;
+    display: flex;
+    flex-direction: column;
+    height: 360px;
+    margin-top: 25px;
+    left: calc(50% - 330px/2);
+    padding: 24px;
+    position: absolute;
+    top: 100px;
+    width: 500px;
 }
 
 .card-deck {

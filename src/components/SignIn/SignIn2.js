@@ -22,7 +22,6 @@ class SignIn2 extends Component {
   })
 
   onFinish = values => {
-    console.log(values)
     this.setState({
       email: values.email,
       password: values.password
@@ -32,7 +31,6 @@ class SignIn2 extends Component {
 
   onSignIn = event => {
     // event.preventDefault()
-
     const { msgAlert, history, setUser } = this.props
 
     signIn(this.state)

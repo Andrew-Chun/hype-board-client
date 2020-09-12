@@ -33,7 +33,6 @@ class SignUp2 extends Component {
 
   onSignUp = event => {
     // event.preventDefault()
-
     const { msgAlert, history, setUser } = this.props
 
     signUp(this.state)
