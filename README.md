@@ -63,8 +63,9 @@ Perhaps the most challenging part of this project was making API requests to a D
 
 ## Images
 App Screenshots:
-![Hype-Board Screenshot](https://i.imgur.com/eUtR7Vt.png)
-![Hype-Board Screenshot2](https://i.imgur.com/QwUWpyt.png)
+![Hype-Board Screenshot1](https://i.imgur.com/PnuMhnL.png)
+![Hype-Board Screenshot2](https://i.imgur.com/GDTKvu0.png)
+![Hype-Board Screenshot3](https://i.imgur.com/I4ZTfpb.png)
 
 ![Hype-Board Landing Page](https://i.imgur.com/flcSDv2.png)
 
